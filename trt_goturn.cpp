@@ -2,7 +2,10 @@
 
 #include <iostream>
 
-class Logger : public nvinfer1::ILogger           
+using namespace nvinfer1;
+using namespace nvcaffeparser1;
+
+class Logger : public ILogger           
 {
     void log(Severity severity, const char* msg) override
     {
@@ -14,13 +17,13 @@ class Logger : public nvinfer1::ILogger
 
 int main()
 {
-    nvinfer1::IBuilder* builder = nvinfer1::createInferBuilder(gLogger);
-    nvinfer1::INetworkDefinition* network = builder->createNetwork();
+    IBuilder* builder = createInferBuilder(gLogger);
+    INetworkDefinition* network = builder->createNetwork();
 
-    nvcaffeparser1::ICaffeParser* parser = nvcaffeparser1::createCaffeParser();
+    //ICaffeParser* parser = createCaffeParser();
 
-    /*for (auto& s : outputs)
+    for (auto& s : outputs)
     {
         network->markOutput(*blobNameToTensor->find(s.c_str()));
-    }*/
+    }
 }

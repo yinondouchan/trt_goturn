@@ -73,7 +73,7 @@ include_directories(${CUDA_INCLUDE_DIRS} ${TRT_INCLUDE_DIR} ${PROJECT_SOURCE_DIR
 link_directories(${CUDA_TOOLKIT_ROOT_DIR}/lib64)
 
 add_executable(trt_goturn trt_goturn.cpp)
-target_link_libraries(trt_goturn ${OpenCV_LIBS} )
+target_link_libraries(trt_goturn cudart cudnn cublas ${OpenCV_LIBS} ${TRT_LIBRARY_INFER} ${TRT_LIBRARY_INFER_PLUGIN} gflags stdc++fs dl)
 
 #Install app
 install(TARGETS trt_goturn RUNTIME DESTINATION bin CONFIGURATIONS Release Debug)
